@@ -1,0 +1,53 @@
+{%load static%} {% load bootstrap_icons %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SuperMarket</title>
+    <link rel="stylesheet" href="{% static 'base/base.css' %}" />
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <section style='color: white;'>
+        <span><a href="/" style='color:white; text-decoration:none;'><h2>SuperMarket</h2></a></span>
+      </section>
+      <section class="search-bar">
+        <form
+          action="/resultado/"
+          method="GET"
+          class="search-input"
+          autocomplete="off"
+        >
+          <input
+            type="search"
+            class="search-input-bar"
+            placeholder="Buscar producto"
+            name="buscarProducto"
+            value="{{request.GET.buscarProducto}}"
+          />
+        
+          <button type="submit">
+            Buscar
+          </button>
+        </form>
+      </section>
+      <section class='btns'>
+       
+        {%if isA%}
+          {{user.username}}
+          <a href="carrito"><span>Cart</span></a>
+          <a href='logout'>Cerrar sesion</a>
+          
+        {%else%}
+          <a href="login">Iniciar sesion</a>
+
+        {%endif%}
+      </section>
+      
+    </nav>
+
+    {%block content%} {%endblock%}
+  </body>
+</html>

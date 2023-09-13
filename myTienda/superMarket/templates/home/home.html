@@ -1,0 +1,177 @@
+{%extends 'base.html'%} 
+{%load static%}
+{%load bootstrap_icons%}
+{%block content%}
+
+<link rel="stylesheet" href="{% static 'home/home.css' %}" />
+<!-- <button id="anadir" onclick="anadir()">Anadir</button> 
+
+<form
+  method="POST"
+  class="add-form"
+  action="/anadirProductos"
+  id="ff"
+  enctype="multipart/form-data"
+>
+  {%csrf_token%}
+  <div class="close-modal">
+    <h1>Anadir producto</h1>
+    <button id="cerrar" onclick="cerrar()">
+      <i class="fa-solid fa-xmark" id="cerrar" onclick="cerrar()">Cerrar</i>
+    </button>
+  </div>
+
+  {{addProduct}}
+  <button type="submit">Anadir</button>
+</form>-->
+
+<section class="product-section">
+  {%if cantidadResultados > 1 %}
+  <span
+    >Se encontraron <strong>{{cantidadResultados}}</strong> resultados con
+    <strong>"{{busqueda}}"</strong></span
+  >
+  {%elif cantidadResultados == 1 %}
+  <span
+    >Se encontro <strong>{{cantidadResultados}}</strong> resultado con tu
+    busqueda</span
+  >
+  {%endif%} {%if ofertas%}
+  <section class="offer-section">
+    <h2>Ofertas</h2>
+
+    <section class="ul-section">
+      <button id="right" onclick="scrollR()">{% bs_icon 'arrow-left-square-fill' %}</button>
+      <ul class="offer-list" id="offer-list">
+        {%for p in producto%} {%if p.is_inOffer%}
+        <li>
+          <a href="/producto/{{p.product_slug}}/{{p.product_id}}">
+            
+            <div class="product-card">
+              <div class="offer-flag">Ahorra {{p.discount_percentage}}%</div>
+              <div class="product-image">
+               
+                {% if p.product_image %}
+                <img
+                  src="/media/{{p.product_image}}"
+                  max-width="100%"
+                  class="lazyLoad"
+                />
+                {% else %}
+                <img
+                  src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png"
+                  max-width="100%"
+                />
+                {%endif%}
+              </div>
+
+              <div class="product-info">
+                <span class="product-name">{{p.product_name|title}}</span>
+                <div class="offer-price">
+                  <span class="product-price">RD$ {{p.product_price}}</span>
+                  <span class="product-offer-price">RD$ {{p.offer_final_price}}</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        {%endif%} {%endfor%}
+      </ul>
+      <button onclick="scrollL()">{%bs_icon 'arrow-right-square-fill'%}</button>
+    </section>
+  </section>
+  {%endif%}
+
+  <section class="category-section">
+    <h2>Categorias</h2>
+    <ul class="category-ul">
+      {%for c in categorias|slice:":5" %}
+      <li class="category-li">
+        <a href="/categorias/{{c.slug}}">
+          <div class="category-image-div">
+            {%if c.category_image%}
+              <img src="media/{{c.category_image}}" />
+            {%else%}
+              <img src="/media/pics/none.jpg" />
+            {%endif%}
+          </div>
+          
+          <span>{{c.category_name | title}}</span>
+      </a>
+      </li>
+      {%endfor%}
+    </ul>
+    <a href="#">Ver todas las categorias</a>
+
+  </section>
+
+  <section class="product-list">
+
+   
+      <h2>Productos recomendados</h2>
+    <ul>
+      {%for p in producto|slice:10%}
+      <li>
+        <a href="/producto/{{p.product_slug}}/{{p.product_id}}">
+          <div class="product-card">
+            <div class="product-image">
+              {% if p.product_image %}
+              <img
+                src="/media/{{p.product_image}}"
+                max-width="100%"
+                class="lazyLoad"
+              />
+              {% else %}
+              <img
+                src="/media/pics/none.jpg"
+                max-width="100%"
+              />
+              {%endif%}
+            </div>
+
+            <div class="product-info">
+              <span class="product-name">{{p.product_name|title}}</span>
+              <span>RD$ {{p.product_price}}</span>
+            </div>
+          </div>
+        </a>
+      </li>
+
+      {%empty%}
+      <span
+        >No se encontro ningun resultado con su busqueda
+        <strong>"{{sinResultado}}"</strong></span
+      >
+
+      {%endfor%}
+    </ul>
+  </section>
+</section>
+
+<footer>
+  <h2>Footer<h2></footer>
+<script>
+  function scrollL() {
+    let left = document.getElementById("offer-list");
+    left.scrollBy(350, 0);
+  }
+
+  function scrollR() {
+    let right = document.getElementById("offer-list");
+    right.scrollBy(-350, 0);
+  }
+
+  document.getElementById("anadir").addEventListener("click", anadir);
+  document.getElementById("cerrar").addEventListener("click", cerrar);
+  document.getElementsByClassName("product-name").item;
+
+  function anadir() {
+    document.getElementById("ff").style.display = "flex";
+  }
+  function cerrar() {
+    document.getElementById("ff").style.display = "none";
+  }
+</script>
+
+{%endblock%}

@@ -1,0 +1,43 @@
+{%extends 'base.html'%} {%load static%} {%block content%}
+<link rel="stylesheet" href="{% static 'resultado/resultado.css' %}" />
+
+<section class="container">
+  {%if producto%}
+
+  <section class="filtros">
+    <h2>Filtros</h2>
+    
+  </section>
+  <section>
+    <span
+    >Se encontraron {{cantidadResultados}} resultados con "{{busqueda}}"
+  </span>
+      <ul class="result-list">
+   
+        {%for p in producto%}
+        <li>
+          <a href="/producto/{{p.product_slug}}/{{p.product_id}}">
+            <div class="product-card">
+              <div class="product__image-container">
+                <img src="/media/{{p.product_image}}" />
+              </div>
+              <div class="product-info">
+                <span class="product-name">{{p.product_name|title}}</span>
+                {%if p.is_inOffer%}
+                <span class="product-price">RD$ {{p.offer_final_price}}</span>
+                {%else%}
+                <span class="product-price"> RD$ {{p.product_price}}</span>
+                {%endif%}
+              </div>
+            </div>
+          </a>
+        </li>
+        {%endfor%}
+      </ul>
+
+      {%else%}
+      <span>No se encontraron resultados con "{{busqueda}}"</span>
+      {%endif%} {%endblock%}</span
+    >
+  </section>
+</section>

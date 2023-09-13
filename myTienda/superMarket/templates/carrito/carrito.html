@@ -1,0 +1,66 @@
+{%extends 'base.html'%} 
+{%load static%}
+{% load bootstrap_icons %} 
+{%block content%}
+
+<link rel="stylesheet" href="{% static 'carrito/carrito.css' %}" />
+
+<section class="cart">
+  <div class="items-section">
+    <span class="list-head">
+      <h1>Carrito</h1>
+      <span
+        >Tienes <strong>{{cart.get_cart_count}}</strong> articulos en el
+        carrito!</span
+      >
+    </span>
+    <ul class="cart-list">
+      {%for i in items%}
+      <hr class="solid" />
+      <div class="cart-item" onclick="seeDetail()">
+        <div class="item-image">
+          <img src="/media/{{i.item_image}}" />
+        </div>
+        <div class="info-wrapper">
+          <div class="item-info">
+            <span>{{i.item_name | title}}</span>
+            <span class="product-category">{{i.get_item_category}}</span>
+          </div>
+          <div class="price-section"><span>RD${{i.get_item_price}}</span></div>
+          <div class="cart-btns">
+            <div class="quantity-btn">
+                <a href="restq/{{i.id}}">{% bs_icon 'dash-square-fill' %}</a>
+                <span>{{i.item_quantity}}</span>
+                <a href="/addq/{{i.id}}">{% bs_icon 'plus-square-fill' %}</a>
+            </div>
+            <div class="delete-section">
+              <a href="deleteFromCart/{{i.id}}"><i>{% bs_icon 'trash-fill' %}</i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        function seeDetail() {
+          window.location.href = "producto/{{i.item_slug}}/{{i.product_id}}";
+        }
+      </script>
+
+      {%endfor%}
+    </ul>
+  </div>
+  <div class="bill-section">
+    <div class="checkout-bill">
+      <div class="cupon">
+        <span>Tienes algun cupon?</span>
+        <input type="text" placeholder="Cupon" class="cupon-input" />
+        <input type="submit" value="Aplicar" class="cupon-btn" />
+      </div>
+      <div class="total">
+        <span>Total:</span>
+        <span> RD$ {{cart.get_cart_total}} </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%endblock%}

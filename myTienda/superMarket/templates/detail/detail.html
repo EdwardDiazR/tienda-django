@@ -1,0 +1,44 @@
+
+{%load static%}
+{%block content%}
+
+<link rel="stylesheet" href="{% static 'detail/detail.css' %}" />
+<section class="product-details">
+    <div class="product-image">
+        {%if producto.product_image%}
+            <img src="/media/{{producto.product_image}}">
+        {%else%}
+            <img src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png">
+        {%endif%}
+    </div>
+    <section class="product-controls">
+        {%if producto.is_inOffer %}
+        <div class="product-info">
+            <h3 style="display: flex;">Tienes un <span class="discount_p">&nbsp;{{producto.discount_percentage}}%&nbsp;</span> de descuento</h3>
+            <span class="product-title">{{producto.product_name}} {{producto.product_size}}</span>
+            <span><strong>Categoria:</strong> {{producto.product_category}}</span>
+            <span><strong>Antes:</strong><span class="original-price">RD$ {{producto.product_price}}</span> </span>
+            <span class="end"><strong>Ahora:</strong> RD${{producto.offer_final_price}}</span>
+            <div class="product-btn">
+                <button>Comprar</button>
+                <button><a href='/addToCart/{{producto.product_id}}'>Anadir al carrito</button>
+            </div>
+        </div>
+
+        {%else%}
+        <div class="product-info">
+            <span class="product-title">{{producto.product_name}} {{producto.product_size}}</span>
+            <span><strong>Categoria:</strong> {{producto.product_category}}</span>
+            <span class="end"><strong>Precio:</strong> {{producto.product_price}}</span>
+            <div class="product-btn">
+                <button>Comprar</button>
+                <button><a href='/addToCart/{{producto.product_id}}'>Anadir al carrito</button>
+            </div>
+        </div>
+
+        {%endif%}
+    </section>
+
+</section>
+
+{%endblock%}

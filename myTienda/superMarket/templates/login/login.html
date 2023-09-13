@@ -1,0 +1,9 @@
+{%block content%}
+
+<Form action="login" method="post">
+    {% csrf_token %}
+    {{LoginForm}}
+
+    <button type='submit'>Iniciar</button>
+</Form>
+{%endblock%}

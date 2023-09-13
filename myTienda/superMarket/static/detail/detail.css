@@ -1,0 +1,226 @@
+*{
+  margin: 0;
+  padding: 0;
+  transition: ease-in;
+  font-family: Arial, Helvetica, sans-serif;
+ 
+}
+
+
+.product-details{
+    display: flex;
+    flex-direction: row;
+    min-height: 70%;
+    max-height: 70%;
+    max-width: 100%;
+    margin: 1rem;
+    padding: 1rem 0rem;
+    box-shadow: -2px 0px 12px 4px rgba(199,199,199,0.76);
+    -webkit-box-shadow: -2px 0px 12px 4px rgba(199,199,199,0.76);
+    -moz-box-shadow: -2px 0px 12px 4px rgba(199,199,199,0.76);
+    animation: myAnim 1s ease 0s 1 normal forwards;
+}
+
+
+
+
+.product-image{
+    min-width: 30%;
+    max-width: 30%;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid;
+}
+
+.product-image img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.product-controls{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.product-info{
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    max-height: 100%;
+    font-size: 1rem;
+   justify-content: space-between;
+    width: 100%;
+}
+
+.product-info span{
+    display: flex;
+    align-items: center;
+}
+
+.discount_p{
+    color: red;
+    
+    -webkit-animation: bounce-top 0.9s both;
+    animation: bounce-top 0.9s both;}
+
+
+.product-title {
+    font-size: 2rem;
+    
+}
+
+.product-btn{
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.product-btn button{
+    background-color: rgb(15, 174, 218);
+    margin: 0.5rem;
+    width: 200px;
+    height: 40px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    max-width: 100%;
+}
+
+.product-btn button:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid;
+    transition: 0.2s ease-in-out;
+}
+
+.original-price{
+    color: red;
+    text-decoration: line-through;
+}
+
+@keyframes myAnim {
+    0% {
+        transform: scale(0.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+ @-webkit-keyframes bounce-top {
+    0% {
+      -webkit-transform: translateY(-45px);
+              transform: translateY(-45px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+      opacity: 1;
+    }
+    24% {
+      opacity: 1;
+    }
+    40% {
+      -webkit-transform: translateY(-24px);
+              transform: translateY(-24px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    65% {
+      -webkit-transform: translateY(-12px);
+              transform: translateY(-12px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    82% {
+      -webkit-transform: translateY(-6px);
+              transform: translateY(-6px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    93% {
+      -webkit-transform: translateY(-4px);
+              transform: translateY(-4px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    25%,
+    55%,
+    75%,
+    87% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    100% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+      opacity: 1;
+    }
+  }
+  @keyframes bounce-top {
+    0% {
+      -webkit-transform: translateY(-45px);
+              transform: translateY(-45px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+      opacity: 1;
+    }
+    24% {
+      opacity: 1;
+    }
+    40% {
+      -webkit-transform: translateY(-24px);
+              transform: translateY(-24px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    65% {
+      -webkit-transform: translateY(-12px);
+              transform: translateY(-12px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    82% {
+      -webkit-transform: translateY(-6px);
+              transform: translateY(-6px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    93% {
+      -webkit-transform: translateY(-4px);
+              transform: translateY(-4px);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    25%,
+    55%,
+    75%,
+    87% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    100% {
+      -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+      opacity: 1;
+    }
+  }
+  
